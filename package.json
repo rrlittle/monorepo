@@ -9,5 +9,8 @@
   ],
   "devDependencies": {
     "turbo": "^1.4.5"
+  },
+  "scripts": {
+    "start": "turbo run start"
   }
 }

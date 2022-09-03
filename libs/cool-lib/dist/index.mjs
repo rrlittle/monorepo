@@ -1,5 +1,5 @@
 // index.ts
-var greeting = "adfsdsssdasssssdf";
+var greeting = "xxx";
 export {
   greeting
 };
