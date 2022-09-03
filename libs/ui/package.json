@@ -1,5 +1,5 @@
 {
-  "name": "cool-lib",
+  "name": "ui",
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
@@ -19,6 +19,8 @@
   },
   "scripts": {
     "build": "tsup ./src/index.ts --format esm,cjs --external react",
-    "start": "yarn build --watch"
+    "dev": "yarn build --watch",
+    "dev:test": "yarn dev",
+    "clean": "rm -rf node_modules"
   }
 }

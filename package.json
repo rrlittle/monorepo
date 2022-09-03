@@ -11,6 +11,8 @@
     "turbo": "^1.4.5"
   },
   "scripts": {
-    "start": "turbo run start"
+    "dev": "turbo run dev",
+    "dev:test": "turbo run dev:test",
+    "clean": "turbo run clean && rm -rf node_modules"
   }
 }
