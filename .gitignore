@@ -13,7 +13,8 @@ data
 *.log
 todos.md
 .store
-.npmrcnode_modules/
+.npmrc
+node_modules/
 .expo/
 dist/
 npm-debug.*
