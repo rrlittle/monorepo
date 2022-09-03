@@ -21,6 +21,6 @@
     "build": "tsup ./src/index.ts --format esm,cjs --external react",
     "dev": "yarn build --watch",
     "dev:test": "yarn dev",
-    "clean": "rm -rf node_modules"
+    "clean": "rm -rf node_modules && rm -rf dist"
   }
 }
