@@ -14,10 +14,11 @@
     "/dist"
   ],
   "dependencies": {
+    "react-native": "^0.69.5",
     "tsup": "^6.2.3"
   },
   "scripts": {
-    "build": "tsup ./index.ts --format esm,cjs --external react",
+    "build": "tsup ./src/index.ts --format esm,cjs --external react",
     "start": "yarn build --watch"
   }
 }
