@@ -7,6 +7,7 @@ export interface HeaderProps {
 
 export const Header = ({ text }: HeaderProps) => (
   <Text accessibilityLabel="header" style={style.h1}>
+    some extra text
     {text}
   </Text>
 );

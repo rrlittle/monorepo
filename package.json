@@ -18,7 +18,8 @@
     "clean": "turbo run clean && rm -rf node_modules && rm yarn.lock",
     "test": "turbo run test",
     "storybook": "yarn workspace docs dev",
-    "build-storybook": "yarn workspace docs build"
+    "build-storybook": "yarn workspace docs build",
+    "dev:ui": "turbo run dev --filter docs --filter ui"
   },
   "dependencies": {}
 }
