@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
-    "@expo/webpack-config": "^0.17.0",
+    "@expo/webpack-config": "^0.17.2",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
     "@types/react": "~18.0.14",
     "@types/react-native": "~0.69.1",
