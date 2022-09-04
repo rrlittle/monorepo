@@ -1,7 +1,7 @@
 import { Text } from "react-native";
 import { style } from "../styles/default";
 
-interface HeaderProps {
+export interface HeaderProps {
   text: string;
 }
 

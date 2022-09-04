@@ -29,3 +29,4 @@ yarn.lock
 .turbo/
 # macOS
 .DS_Store
+yarn-error.log
