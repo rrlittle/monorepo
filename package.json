@@ -6,7 +6,8 @@
     "apps/*",
     "config/*",
     "libs/*",
-    "tools/*"
+    "tools/*",
+    "docs/*"
   ],
   "devDependencies": {
     "turbo": "^1.4.5"
@@ -15,7 +16,9 @@
     "dev": "turbo run dev",
     "dev:test": "turbo run dev:test",
     "clean": "turbo run clean && rm -rf node_modules && rm yarn.lock",
-    "test": "turbo run test"
+    "test": "turbo run test",
+    "storybook": "yarn workspace docs storybook",
+    "build-storybook": "yarn workspace docs build-storybook"
   },
   "dependencies": {}
 }
