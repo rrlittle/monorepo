@@ -1,6 +1,7 @@
 {
   "name": "docs",
   "private": true,
+  "version": "1.0.0",
   "scripts": {
     "storybook": "start-storybook",
     "build-storybook": "build-storybook",
