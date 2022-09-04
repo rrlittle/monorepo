@@ -25,6 +25,7 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
-
+yarn.lock
+.turbo/
 # macOS
 .DS_Store
