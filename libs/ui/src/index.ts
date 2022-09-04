@@ -1,4 +1,3 @@
-export const greeting:string = "xxx";
+export const greeting: string = "xddddddxx";
 
-
-export const foo = (x:string, y:Number): string => `${x} ${y}` 
+export const foo = (x: string, y: Number): string => `${x} ${y}`;
