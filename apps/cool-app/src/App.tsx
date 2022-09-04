@@ -5,6 +5,7 @@ import { greeting } from "ui";
 export default function App() {
   return (
     <View style={styles.container}>
+      <Text>Hello Cypress</Text>
       <Text>{greeting}</Text>
 
       <Text>DSFDSDSDxxxxyyy</Text>

@@ -1,6 +1,7 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+        "types": ["node", "jest", "@testing-library/jest-native","@testing-library/jest-dom", "@testing-library/react-native"]
   }
 }
