@@ -14,7 +14,8 @@
   "scripts": {
     "dev": "turbo run dev",
     "dev:test": "turbo run dev:test",
-    "clean": "turbo run clean && rm -rf node_modules && rm yarn.lock"
+    "clean": "turbo run clean && rm -rf node_modules && rm yarn.lock",
+    "test": "turbo run test"
   },
   "dependencies": {}
 }
