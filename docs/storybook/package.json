@@ -3,8 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "storybook": "start-storybook",
-    "build-storybook": "build-storybook",
+    "dev": "start-storybook",
+    "build": "build-storybook",
     "clean": "rm -rf node_modules"
   },
   "devDependencies": {

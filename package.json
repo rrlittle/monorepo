@@ -17,8 +17,8 @@
     "dev:test": "turbo run dev:test",
     "clean": "turbo run clean && rm -rf node_modules && rm yarn.lock",
     "test": "turbo run test",
-    "storybook": "yarn workspace storybook storybook",
-    "build-storybook": "yarn workspace storybook build-storybook"
+    "storybook": "yarn workspace docs dev",
+    "build-storybook": "yarn workspace docs build"
   },
   "dependencies": {}
 }
