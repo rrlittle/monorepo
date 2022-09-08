@@ -1,24 +1,19 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import { greeting } from "ui";
+import { Text, View } from "react-native";
+import { Bg } from "./components/Bg";
+import { Button } from "./components/Button";
+import { ThemeSwitch } from "./components/ThemeSwitch";
+import { ThemeProvider } from "./context/ThemeContext";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello Cypress</Text>
-      <Text>{greeting}</Text>
-
-      <Text>DSFDSDSDxxxxyyy</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ThemeProvider>
+      <Bg>
+        <StatusBar style="auto" />
+        <ThemeSwitch />
+        <Text>..asdfas.</Text>
+        <Button onClick={() => alert("hello")}>dsafd</Button>
+      </Bg>
+    </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
