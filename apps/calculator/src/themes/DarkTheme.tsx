@@ -5,7 +5,19 @@ export const DarkTheme: Theme = {
   btn: {
     backgroundColor: "#2E2F38",
   },
-  textStyle: {
+  btnPrimary: {
+    backgroundColor: "slategrey",
+  },
+  btnSecondary: {
+    backgroundColor: "lightgrey",
+  },
+  text: {
     color: "navajowhite",
+  },
+  textPrimary: {
+    color: "darkslategray",
+  },
+  textSecondary: {
+    color: "darkslategray",
   },
 };

@@ -1,11 +1,19 @@
+type BtnTheme = {
+  backgroundColor: string;
+};
+
+type TextTheme = {
+  color: string;
+};
+
 type Theme = {
   bg: {
     backgroundColor: string;
   };
-  btn: {
-    backgroundColor: string;
-  };
-  textStyle: {
-    color: string;
-  };
+  btn: BtnTheme;
+  btnPrimary: BtnTheme;
+  btnSecondary: BtnTheme;
+  text: TextTheme;
+  textPrimary: TextTheme;
+  textSecondary: TextTheme;
 };

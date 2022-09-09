@@ -3,9 +3,21 @@ export const LightTheme: Theme = {
     backgroundColor: "navajowhite",
   },
   btn: {
-    backgroundColor: "lightstategray",
+    backgroundColor: "grey",
   },
-  textStyle: {
-    color: "white",
+  btnPrimary: {
+    backgroundColor: "lightslategray",
+  },
+  btnSecondary: {
+    backgroundColor: "honeydew",
+  },
+  text: {
+    color: "navajowhite",
+  },
+  textPrimary: {
+    color: "darkslategray",
+  },
+  textSecondary: {
+    color: "darkslategray",
   },
 };

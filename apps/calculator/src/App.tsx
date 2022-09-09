@@ -1,7 +1,6 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
 import { Bg } from "./components/Bg";
-import { Button } from "./components/Button";
+import { Keyboard } from "./components/Keyboard/Keyboard";
 import { ThemeSwitch } from "./components/ThemeSwitch";
 import { ThemeProvider } from "./context/ThemeContext";
 
@@ -11,8 +10,7 @@ export default function App() {
       <Bg>
         <StatusBar style="auto" />
         <ThemeSwitch />
-        <Text>..asdfas.</Text>
-        <Button onClick={() => alert("hello")}>dsafd</Button>
+        <Keyboard />
       </Bg>
     </ThemeProvider>
   );

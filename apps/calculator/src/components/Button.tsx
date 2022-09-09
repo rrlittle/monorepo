@@ -1,10 +1,18 @@
-import { useContext } from "react";
-import { FlexAlignType, FlexStyle, Text, TouchableOpacity } from "react-native";
+import { useContext, useMemo } from "react";
+import {
+  FlexAlignType,
+  FlexStyle,
+  Text,
+  TextStyle,
+  TouchableOpacity,
+} from "react-native";
 import { ThemeContext } from "../context/ThemeContext";
 
 export type ButtonProps = {
   onClick: () => void;
   children: string;
+  variant?: undefined | "primary" | "secondary";
+  style: undefined | object;
 };
 
 const btnStyle = {
@@ -16,13 +24,30 @@ const btnStyle = {
   margin: 0,
 };
 
-const textStyle = {};
+const textStyle = {
+  fontWeight: "bold" as TextStyle["fontWeight"],
+  fontSize: 20,
+};
 
-export const Button = ({ onClick, children }: ButtonProps) => {
+export const Button = ({ onClick, children, variant, style }: ButtonProps) => {
   const { theme } = useContext(ThemeContext);
+  const [btnTheme, textTheme] = useMemo(() => {
+    switch (variant) {
+      case "primary":
+        return [theme.btnPrimary, theme.textPrimary];
+      case "secondary":
+        return [theme.btnSecondary, theme.textPrimary];
+      default:
+        return [theme.btn, theme.text];
+    }
+  }, [variant]);
+
   return (
-    <TouchableOpacity style={[btnStyle, theme.btn]} onPress={onClick}>
-      <Text style={[textStyle, theme.textStyle]}>{children}</Text>
+    <TouchableOpacity
+      style={[style || {}, btnStyle, btnTheme]}
+      onPress={onClick}
+    >
+      <Text style={[textStyle, textTheme]}>{children}</Text>
     </TouchableOpacity>
   );
 };
