@@ -45,8 +45,10 @@ export const Button = ({ onClick, children, variant, style }: ButtonProps) => {
 
   return (
     <TouchableOpacity
+      accessibilityLabel="button"
       style={[style || {}, btnStyle, btnTheme]}
       onPress={onClick}
+      data-testID={`button-${children}`}
     >
       <Text style={[textStyle, textTheme]}>{children}</Text>
     </TouchableOpacity>

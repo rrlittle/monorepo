@@ -133,5 +133,5 @@ export const useKeyboard = () => {
     [handleOpPress, handleNumberPress],
   );
 
-  return { input, backspace, display };
+  return { input, display };
 };
