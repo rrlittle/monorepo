@@ -11,8 +11,9 @@ import { ThemeContext } from "../context/ThemeContext";
 export type ButtonProps = {
   onClick: () => void;
   children: string;
-  variant?: undefined | "primary" | "secondary";
-  style: undefined | object;
+  variant?: "primary" | "secondary";
+  style?: object;
+  accessibilityLabel?: string;
 };
 
 const btnStyle = {
@@ -30,7 +31,13 @@ const textStyle = {
   fontSize: 20,
 };
 
-export const Button = ({ onClick, children, variant, style }: ButtonProps) => {
+export const Button = ({
+  onClick,
+  children,
+  variant,
+  style,
+  accessibilityLabel,
+}: ButtonProps) => {
   const { theme } = useContext(ThemeContext);
   const [btnTheme, textTheme] = useMemo(() => {
     switch (variant) {
@@ -45,7 +52,8 @@ export const Button = ({ onClick, children, variant, style }: ButtonProps) => {
 
   return (
     <TouchableOpacity
-      accessibilityLabel="button"
+      accessibilityRole="button"
+      accessibilityLabel={accessibilityLabel}
       style={[style || {}, btnStyle, btnTheme]}
       onPress={onClick}
       data-testID={`button-${children}`}

@@ -42,15 +42,24 @@ export const Keyboard = ({}: KeyboardProps) => {
   const { input, display } = useKeyboard();
   const { theme } = useContext(ThemeContext);
   return (
-    <View style={containerStyle}>
-      <View style={[displayStyle, theme.bgSecondary]}>
+    <View style={containerStyle} accessibilityLabel="keyboard-container">
+      <View
+        style={[displayStyle, theme.bgSecondary]}
+        accessibilityRole="alert"
+        accessibilityLabel="keyboard-display"
+      >
         <Text style={displayTextStyle}>{display || ""}</Text>
       </View>
       {layout.map((row) => (
-        <View key={JSON.stringify(row)} style={rowStyle}>
+        <View
+          key={JSON.stringify(row)}
+          style={rowStyle}
+          accessibilityLabel="keyboard-button-row"
+        >
           <>
             {row.map((content) => (
               <Button
+                accessibilityLabel="keyboard-button"
                 style={{ marginHorizontal: 3 }}
                 key={content}
                 onClick={() => input(content)}
