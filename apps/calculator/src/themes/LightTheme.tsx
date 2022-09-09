@@ -2,6 +2,12 @@ export const LightTheme: Theme = {
   bg: {
     backgroundColor: "navajowhite",
   },
+  BgPrimary: {
+    backgroundColor: "burlywood",
+  },
+  bgSecondary: {
+    backgroundColor: "cornsilk",
+  },
   btn: {
     backgroundColor: "grey",
   },

@@ -17,7 +17,8 @@ export type ButtonProps = {
 
 const btnStyle = {
   width: 72,
-  height: 72,
+  flexShrink: 1,
+  flexBasis: 72,
   borderRadius: 24,
   justifyContent: "center" as FlexStyle["justifyContent"],
   alignItems: "center" as FlexAlignType,

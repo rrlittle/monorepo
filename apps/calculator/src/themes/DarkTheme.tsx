@@ -2,6 +2,12 @@ export const DarkTheme: Theme = {
   bg: {
     backgroundColor: "darkslategray",
   },
+  BgPrimary: {
+    backgroundColor: "slategrey",
+  },
+  bgSecondary: {
+    backgroundColor: "lightgrey",
+  },
   btn: {
     backgroundColor: "#2E2F38",
   },

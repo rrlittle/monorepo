@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 export enum OpString {
   CLEAR = "C",
@@ -28,50 +28,54 @@ export type KeyboardValue =
 export type KeyboardInput = KeyboardValue | OpString;
 
 export const useKeyboard = () => {
-  const [firstNumber, setFirstNumber] = useState("");
-  const [secondNumber, setSecondNumber] = useState("");
+  const [currentNumber, setCurrentNumber] = useState("");
+  const [prevNumber, setPrevNumber] = useState("");
   const [op, setOp] = useState<OpString | null>(null);
-  const [rawResult, setResult] = useState<Number | null>(null);
 
-  const result = rawResult === null ? "" : rawResult.toLocaleString();
+  const display = useMemo(() => {
+    const toDisplay =
+      currentNumber === "" ? "" : Number(currentNumber).toLocaleString();
+    return currentNumber.endsWith(".") ? toDisplay + "." : toDisplay;
+  }, [currentNumber]);
 
   const clear = useCallback(() => {
-    setFirstNumber("");
-    setSecondNumber("");
+    setCurrentNumber("");
+    setPrevNumber("");
     setOp(null);
-    setResult(null);
-  }, [setFirstNumber, setSecondNumber, setOp, setResult]);
+  }, [setCurrentNumber, setPrevNumber, setOp]);
 
   const makeNeg = useCallback(() => {
-    if (firstNumber !== "") {
-      setFirstNumber(
-        firstNumber.startsWith("-") ? firstNumber.slice(1) : "-" + firstNumber,
+    if (currentNumber !== "") {
+      setCurrentNumber(
+        currentNumber.startsWith("-")
+          ? currentNumber.slice(1)
+          : "-" + currentNumber,
       );
     }
-  }, [firstNumber, setFirstNumber]);
+  }, [currentNumber, setCurrentNumber]);
 
   const getResult = useCallback(() => {
-    const _firstNumber = Number(firstNumber);
-    const _secondNumber = Number(secondNumber);
+    const _currentNumber = Number(currentNumber);
+    const _prevNumber = Number(prevNumber);
     switch (op) {
       case OpString.ADD:
-        return _firstNumber + _secondNumber;
+        return _currentNumber + _prevNumber;
       case OpString.SUB:
-        return _firstNumber - _secondNumber;
+        return _prevNumber - _currentNumber;
       case OpString.DIV:
-        return _firstNumber / _secondNumber;
+        return _prevNumber / _currentNumber;
       case OpString.MULT:
-        return _firstNumber * _secondNumber;
+        return _currentNumber * _prevNumber;
       case OpString.MOD:
-        return _firstNumber % _secondNumber;
+        return _prevNumber % _currentNumber;
       default:
         return null;
     }
-  }, [op, firstNumber, secondNumber]);
+  }, [op, currentNumber, prevNumber]);
 
   const backspace = useCallback(() => {
-    setFirstNumber(firstNumber.slice(1));
-  }, []);
+    setCurrentNumber(currentNumber.slice(0, -1));
+  }, [setCurrentNumber, currentNumber]);
 
   const handleOpPress = useCallback(
     (opValue: OpString) => {
@@ -82,45 +86,52 @@ export const useKeyboard = () => {
         case OpString.NEG:
           makeNeg();
           break;
-        case OpString.EQ:
-          setResult(getResult());
+        case OpString.EQ: {
+          const result = getResult();
+          clear();
+          setCurrentNumber("" + result);
           break;
+        }
         case OpString.BACK:
           backspace();
           break;
         default:
           setOp(opValue);
-          setSecondNumber(firstNumber);
-          setFirstNumber("");
+          setPrevNumber(currentNumber);
+          setCurrentNumber("");
           break;
       }
     },
     [
       clear,
       makeNeg,
-      setResult,
       getResult,
       backspace,
       setOp,
-      setSecondNumber,
-      setFirstNumber,
+      setPrevNumber,
+      setCurrentNumber,
     ],
   );
 
   const handleNumberPress = useCallback(
     (buttonValue: KeyboardValue) => {
-      setFirstNumber(firstNumber + buttonValue);
+      if (!Number.isNaN(Number(currentNumber + buttonValue))) {
+        setCurrentNumber(currentNumber + buttonValue);
+      }
     },
-    [setFirstNumber, firstNumber],
+    [setCurrentNumber, currentNumber],
   );
 
-  const input = useCallback((value: OpString | KeyboardValue) => {
-    if (value in OpString) {
-      handleOpPress(value as OpString);
-    } else {
-      handleNumberPress(value as KeyboardValue);
-    }
-  }, []);
+  const input = useCallback(
+    (value: OpString | KeyboardValue) => {
+      if (Object.values(OpString).includes(value as OpString)) {
+        handleOpPress(value as OpString);
+      } else {
+        handleNumberPress(value as KeyboardValue);
+      }
+    },
+    [handleOpPress, handleNumberPress],
+  );
 
-  return { input, backspace, result };
+  return { input, backspace, display };
 };
