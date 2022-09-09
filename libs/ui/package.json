@@ -2,7 +2,7 @@
   "name": "ui",
   "version": "1.0.0",
   "main": "dist/index.js",
-  "types": "dist/index.d.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -22,7 +22,7 @@
     "tsup": "^6.2.3"
   },
   "scripts": {
-    "build": "tsup ./src/index.ts --format esm,cjs --external react",
+    "build": "tsup ./src/index.ts --dts --format esm,cjs --external react",
     "dev": "yarn build --watch",
     "dev:test": "yarn dev",
     "test": "jest",
